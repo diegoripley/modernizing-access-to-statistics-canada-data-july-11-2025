@@ -21,12 +21,12 @@ Presented on July 11, 2025
 ---
 
 ### Current State
-- Vast public data exists. But it is difficult to access and analyze.
+- Vast public data exists. Difficult to access and analyze.
   - 12,207 ["tables"](https://www150.statcan.gc.ca/n1/en/type/data?p=0-data/tables#tables), with 7,919 are available via the [Web Data Service (WDS)](https://www.statcan.gc.ca/en/developers/wds).
   - 284 "Profiles of a community or region". Some examples include:
     - 2021 Census of Population.
-    - National Address Register (NAR) - used by [PHAC's Pelias geocoder](https://geocoder.alpha.phac.gc.ca/).
-- Thousands of CSVs (>3TBs) and other file formats (ex. XML, IVT, etc.).
+    - National Address Register (NAR).
+- Thousands of CSVs (>3TBs) and other file formats.
 - Many datasets are trapped behind [archived web pages](https://www12.statcan.gc.ca/english/census96/data/profiles/Rp-eng.cfm?LANG=E&APATH=3&DETAIL=0&DIM=0&FL=A&FREE=0&GC=0&GID=0&GK=0&GRP=1&PID=35544&PRID=0&PTYPE=3&S=0&SHOWALL=0&SUB=0&Temporal=1996&THEME=34&VID=0&VNAMEE=&VNAMEF=) and legacy file formats (ex. [ARC/INFO](https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2001-eng.cfm), [MapInfo](https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2001-eng.cfm), [IVT](https://www12.statcan.gc.ca/datasets/Index-eng.cfm?Temporal=2021)).
 
 ---
@@ -49,7 +49,7 @@ Let's say that you want to visualize:
 To complete this simple analysis, you would need to:
 1. Download a 2.25 GB ZIP file.
 2. Extract it - now 26.60 GB of CSVs.
-3. Parse and filter just one characteristic you care about.
+3. Parse and filter your chosen characteristic.
 4. Download an additional 97 MB ZIP file of a DA boundary shapefile.
 5. Extract the ZIP file. Now you have a 171.72 MB file.
 6. Link the processed CSV (step #3) to the Shapefile from step #5.
@@ -115,7 +115,7 @@ Want a DGUID for your region? Use the [StatCan Geo Search Tool](https://statcan-
 {{< slide background-video="2021_census_of_population_example_duckdb_lonboard.mp4" background-video-loop="true" background-video-muted="true" background-size="contain" >}}
 
 {{% fragment %}}
-📁 Demo notebook: [example_census_of_pop_2021.ipynb](https://github.com/dataforcanada/process-statcan-data/blob/2c22c4fc10a617e1cca30c5018f6606e59946406/experiments/presentation/example_census_of_pop_2021.ipynb)
+📁 Demo notebook: [over_100k_cop_2021.ipynb](https://github.com/dataforcanada/process-statcan-data/blob/6b42a80529162d35b973bc7690f4950bd2f897ef/experiments/presentation/over_100k_cop_2021.ipynb)
 {{% /fragment %}}
 
 ---
@@ -142,6 +142,6 @@ https://data-01.dataforcanada.org/experiments/statistics_canada/tables/{productI
 ---
 
 ### What's Next (Continued)
-- Build Python and R bindings for programmatic access.
+- Build [Python](https://github.com/diegoripley/stats_can_data) and R bindings for programmatic access.
 - Generate vector tiles for geographies and Census data.
   - Example: [YouTube demo](https://www.youtube.com/watch?v=1C2RVh5Ditk).

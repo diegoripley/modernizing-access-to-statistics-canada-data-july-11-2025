@@ -1,4 +1,4 @@
-baseURL = "https://www.diegoripley.ca/files/modernizing_access_to_statistics_canada_data_july_11_2025/"
+#baseURL = "https://www.diegoripley.ca/files/modernizing_access_to_statistics_canada_data_july_11_2025/"
 languageCode = "en-us"
 title = "A Hugo theme for creating Reveal.js presentations"
 disableKinds = ["sitemap", "RSS"]
@@ -7,7 +7,7 @@ disableKinds = ["sitemap", "RSS"]
 themesDir = "../"
 
 # uncomment for browsing at file:///
-# relativeURLs = true
+relativeURLs = true
 # uglyURLs = true
 
 [params]
