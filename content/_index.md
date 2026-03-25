@@ -76,8 +76,8 @@ SELECT
     END AS percentage_over_100k,
     geo.geom
 FROM
-    'https://data-01.dataforcanada.org/processed/statistics_canada/census_of_population/2021/tabular/da_2021.parquet' AS cop,
-    'https://data-01.dataforcanada.org/processed/statistics_canada/boundaries/2021/digital_boundary_files/da_2021.parquet' AS geo
+    'https://data.source.coop/dataforcanada/d4c-datapkg-statistical/processed/ca_statcan_2021A000011124_d4c-datapkg-statistical_census_pop_dissemination_areas_2021_v0.1.0-beta.parquet' AS cop,
+    'https://data.source.coop/dataforcanada/d4c-datapkg-statistical/processed/ca_statcan_2021A000011124_d4c-datapkg-statistical_dissemination_areas_digital_2021_v0.1.0-beta.parquet' AS geo
 WHERE geo.csd_dguid IN (
     '2021A00056001009', -- Whitehorse, YT
     '2021A00056106023', -- Yellowknife, NT
@@ -98,7 +98,7 @@ AND cop.da_dguid = geo.da_dguid;
 
 **🚀 132.75 MB, 2.89 seconds**
 
-Want a DGUID for your region? Use the [StatCan Geo Search Tool](https://statcan-geography.dataforcanada.org/) (2021 vintage).
+Want a DGUID for your region? Use the [StatCan Geo Search Tool](https://statcan-geography.labs.dataforcanada.org/) (2021 vintage).
 
 {{% note %}}
 - If you want to replicate this figure, just add EXPLAIN ANALYZE at the beginning of the SQL code
@@ -114,34 +114,30 @@ Want a DGUID for your region? Use the [StatCan Geo Search Tool](https://statcan-
 
 {{< slide background-video="2021_census_of_population_example_duckdb_lonboard.mp4" background-video-loop="true" background-video-muted="true" background-size="contain" >}}
 
-{{% fragment %}}
-📁 Demo notebook: [over_100k_cop_2021.ipynb](https://github.com/dataforcanada/process-statcan-data/blob/6b42a80529162d35b973bc7690f4950bd2f897ef/experiments/presentation/over_100k_cop_2021.ipynb)
-{{% /fragment %}}
-
 ---
 
 ### Progress So Far
 - Fully processed:
-  - [2021 Census of Population](https://data-01.dataforcanada.org/processed/statistics_canada/census_of_population/2021/).
-  - [2021 and 2016 Census of Agriculture](https://data-01.dataforcanada.org/processed/statistics_canada/census_of_agriculture/).
-  - [2021 geographic boundaries](https://data-01.dataforcanada.org/processed/statistics_canada/boundaries/2021/) 
-  - [Other util datasets](https://data-01.dataforcanada.org/processed/statistics_canada/).
+  - [2021 Census of Population](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-statistical/statistics_canada/census_data/).
+  - 2021 and 2016 Census of Agriculture.
+  - [2021 geographic boundaries](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-statistical/statistics_canada/statistical_administrative_boundaries/).
+  - [Other util datasets](https://www.dataforcanada.org/docs/d4c-pkgs/d4c-datapkg-foundation/).
 - 99.91% of WDS tables processed - 7,911/7,918.
 - Accessible at:
 ```
-https://data-01.dataforcanada.org/experiments/statistics_canada/tables/{productId}/en/{productId}.parquet
+https://source.coop/dataforcanada/d4c-datapkg-statistical/processed/tables/{productId}.parquet
 ```
 ---
 
 ### What's Next?
 - Build a Dagster pipeline to auto-refresh WDS tables.
-  - Hot storage via [data-01](https://data-01.dataforcanada.org/), [data-02](https://data-02.dataforcanada.org/), and [Zenodo](https://zenodo.org/). Torrent available as well that is HTTP seeded by Zenodo and [data-02](https://data-02.dataforcanada.org/).
-  - Cold storage available through Zenodo.
+  - Hot storage via [Source Cooperative](https://source.coop/dataforcanada/d4c-datapkg-statistical/processed)
+  - Cold storage available through [Zenodo](https://zenodo.org/communities/dataforcanada/records).
 - Process all Census of Population and Census of Agriculture to the highest detail available as far back as possible (work backwards: 2016, 2011, 2006, 2001, etc.).
 
 ---
 
 ### What's Next (Continued)
-- Build [Python](https://github.com/diegoripley/stats_can_data) and R bindings for programmatic access.
+- Build [Python](https://github.com/dataforcanada/d4c-api) and R bindings for programmatic access.
 - Generate vector tiles for geographies and Census data.
   - Example: [YouTube demo](https://www.youtube.com/watch?v=1C2RVh5Ditk).

@@ -10,8 +10,8 @@ themesDir = "../"
 relativeURLs = true
 # uglyURLs = true
 
-[params]
-author = "Diego Ripley"
+[params.author]
+  name = "Diego Ripley"
 
 # currently only the unsafe mode for goldmark is supported
 [markup.goldmark.renderer]
